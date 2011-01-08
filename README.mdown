@@ -1,0 +1,7 @@
+VsMono
+======
+
+Installation
+------------
+
+Just double click on the vsix file. It will install into Visual Studio 2010 automatically. If you want to open the solution to see the truly amazing code I wrote then you can do that too.
