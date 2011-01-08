@@ -8,3 +8,11 @@ Just double click on the vsix file. It will install into Visual Studio 2010 auto
 
 Ok, download the vsix file first, then double click on it.
 
+MonoMac
+-------
+
+MonoTouch projects load once the VSIX is installed, however MonoMac files currently have the following line:
+
+  <Import Project="$(MSBuildExtensionsPath)\Mono\MonoMac\v0.0\Mono.MonoMac.targets" />
+
+After speaking to the MonoMac team, and a some basic testing, it appears safe to delete this line from the csproj file. Once you've done this, the project will load fine.
