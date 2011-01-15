@@ -15,7 +15,10 @@ MonoTouch projects load once the VSIX is installed, however MonoMac files curren
 
     <Import Project="$(MSBuildExtensionsPath)\Mono\MonoMac\v0.0\Mono.MonoMac.targets" />
 
-After speaking to the MonoMac team, and a some basic testing, it appears safe to delete this line from the csproj file. Once you've done this, the project will load fine.
+I first recommended deleting this line, but of course it keeps coming back. So you'll now find a dummy Mono.MonoMac.targets in the repo that needs to be copied to here:
+
+    C:\Program Files (x86)\MSBuild\Mono\MonoMac\v0.0
+
 
 MonoTouch
 ---------
