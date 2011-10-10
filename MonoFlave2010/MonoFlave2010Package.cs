@@ -26,6 +26,8 @@ namespace BinaryFinery.MonoFlave2010
     // a package.
     [ProvideProjectFactory(typeof(MonoTouchFlavorProjectFactory),
         "MonoTouch Flavor", "Mono Files (*.csproj);*.csproj", null, null, null)]
+    [ProvideProjectFactory(typeof(MonoTouch5FlavorProjectFactory),
+        "MonoTouch5 Flavor", "Mono Files (*.csproj);*.csproj", null, null, null)]
     [ProvideProjectFactory(typeof(MonoMacFlavorProjectFactory),
         "MonoMac Flavor", "Mono Files (*.csproj);*.csproj", null, null, null)]
     [PackageRegistration(UseManagedResourcesOnly = true)]
@@ -61,6 +63,7 @@ namespace BinaryFinery.MonoFlave2010
         {
             Trace.WriteLine (string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this.ToString()));
             this.RegisterProjectFactory(new MonoTouchFlavorProjectFactory(this));
+            this.RegisterProjectFactory(new MonoTouch5FlavorProjectFactory(this));
             this.RegisterProjectFactory(new MonoMacFlavorProjectFactory(this));
             base.Initialize();
 
@@ -114,6 +117,52 @@ namespace BinaryFinery.MonoFlave2010
         }
 
     }
+
+    [ComVisible(false)]
+    [Guid(MonoTouch5ProjectFactoryGuid)]
+    public class MonoTouch5FlavorProjectFactory : FlavoredProjectFactoryBase
+    {
+        private const string MonoTouch5ProjectFactoryGuid = "6BC8ED88-2882-458C-8E55-DFD12B67127B";
+        private MonoFlave2010Package package;
+
+        public MonoTouch5FlavorProjectFactory(MonoFlave2010Package package)
+            : base()
+        {
+            this.package = package;
+        }
+
+        protected override object PreCreateForOuter(IntPtr outerProjectIUnknown)
+        {
+            return new MonoTouch5FlavePackageProject(this.package);
+        }
+    }
+
+    [ComVisible(true)]
+    [ClassInterface(ClassInterfaceType.None)]
+    [Guid(PackageProjectGuid)]
+    public class MonoTouch5FlavePackageProject : FlavoredProjectBase
+    {
+        private const string PackageProjectGuid = "FDB50E18-0B79-4B8F-A500-B82729B03842";
+        private MonoFlave2010Package package;
+
+        public MonoTouch5FlavePackageProject(MonoFlave2010Package package)
+        {
+            this.package = package;
+        }
+
+        protected override void SetInnerProject(IntPtr innerIUnknown)
+        {
+            if (base.serviceProvider == null)
+            {
+                base.serviceProvider = this.package;
+            }
+
+            base.SetInnerProject(innerIUnknown);
+        }
+
+    }
+
+
     [ComVisible(false)]
     [Guid(MonoMacProjectFactoryGuid)]
     public class MonoMacFlavorProjectFactory : FlavoredProjectFactoryBase
