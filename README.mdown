@@ -27,3 +27,33 @@ MonoTouch should "just work". Once you've loaded the project, you'll probably be
 I've got [a tool](https://github.com/jamiebriant/BinaryFinery.BarebonesGenerator) that can convert a .NET dll into "dumb" source code: i.e. just the classes and methods, without implementation.
 Use this tool to create a version of monotouch.dll that depends on *windows* implementations of System.dll etc. 
 Details on how to set up PC/Mac MT development are on my [blog](http://blog.binaryfinery.com).
+
+### Loading monotouch.dll in VS
+
+You'll be able to load the projects in Visual Studio, but Resharper will complain. The monotouch.dll references System assemblies that dont exist on windows.
+There is a relatively easy fix for this: patch the dll using ildasm/ilasm.
+
+    ildasm /all monotouch.dll /out=monotouch.il
+
+Then locate the "assembly extern" definitions, like this one:
+
+    .assembly extern /*23000001*/ mscorlib
+    {
+      .publickeytoken = (7C EC 85 D7 BE A7 79 8E )                         // |.....y.
+      .ver 2:0:5:0
+    }
+
+And convert them to this:
+
+    .assembly extern /*23000001*/ mscorlib
+    {
+      .publickeytoken = ( b7 7a 5c 56 19 34 e0 89  )                         // |.....y.
+      .ver 4:0:0:0
+    }
+
+And run ilasm to regenerate monotouch.dll
+
+    ilasm monotouch.il /output=monotouch.dll
+
+Finally, in Visual Studio, update the project's Reference Paths (a tab of the project properties) to point to the directory with the new monotouch.dll. Doing so will only affect where Visual Studio looks,
+and not where MonoDevelop on OSX looks.
