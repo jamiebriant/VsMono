@@ -24,8 +24,7 @@ MonoTouch
 ---------
 
 MonoTouch should "just work". Once you've loaded the project, you'll probably be wondering how to get intellisense to work, given that monotouch.dll isnt available. 
-I've got [a tool](https://github.com/jamiebriant/BinaryFinery.BarebonesGenerator) that can convert a .NET dll into "dumb" source code: i.e. just the classes and methods, without implementation.
-Use this tool to create a version of monotouch.dll that depends on *windows* implementations of System.dll etc. 
+I've got [a tool](https://github.com/jamiebriant/BinaryFinery.BarebonesGenerator) that can convert a .NET dll into "dumb" source code *but its total overkill*. Just use ildasm/ilasm as described below. 
 Details on how to set up PC/Mac MT development are on my [blog](http://blog.binaryfinery.com).
 
 ### Loading monotouch.dll in VS
