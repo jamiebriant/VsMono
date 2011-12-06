@@ -4,6 +4,8 @@ VsMono
 Installation
 ------------
 
+UPDATE: Until December 5th, the ready-built VSIX file was out of date (version 1.7). Its now the correct version (5.0) so you don't have to compile. Thanks to @slodge for discovering that.
+
 Just double click on the vsix file. It will install into Visual Studio 2010 automatically. If you want to open the solution to see the truly amazing code I wrote then you can do that too.
 
 Ok, download the vsix file first, then double click on it.
