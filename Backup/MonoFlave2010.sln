@@ -1,14 +1,14 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoFlave2010", "MonoFlave2010\MonoFlave2010.csproj", "{D91FD2FF-3084-43D2-A203-32FA7B7ECC14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoFlave2010_IntegrationTests", "MonoFlave2010\MonoFlave2010_IntegrationTests\MonoFlave2010_IntegrationTests.csproj", "{3E94ADC8-BFB8-4B8B-AA06-227F11BE4DDF}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C1F953D7-69FC-4253-95B5-822975C9251D}"
 	ProjectSection(SolutionItems) = preProject
 		IntegrationTests.testsettings = IntegrationTests.testsettings
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoFlave2010", "MonoFlave2010\MonoFlave2010.csproj", "{D91FD2FF-3084-43D2-A203-32FA7B7ECC14}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoFlave2010_IntegrationTests", "MonoFlave2010\MonoFlave2010_IntegrationTests\MonoFlave2010_IntegrationTests.csproj", "{3E94ADC8-BFB8-4B8B-AA06-227F11BE4DDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
